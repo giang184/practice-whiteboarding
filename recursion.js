@@ -21,3 +21,27 @@ const concat = (x) => {
 }
 
 console.log(concat(4));
+
+/**
+ * @param {number} rowIndex
+ * @return {number[]}
+ */
+var getRow = function(rowIndex) {
+  
+  if (rowIndex ===0) {
+    return [1];
+  } else if (rowIndex === 1) {
+    return [1, 1];
+  } else {
+    result = [];
+    result.push(1);
+    previousRow = getRow(rowIndex-1);
+    for(let i =1; i< rowIndex; i++) {
+      result.push(previousRow[i] + previousRow[i+1]);
+    }
+    result.push(1);
+    return result;
+  }
+};
+
+console.log(getRow(1));
