@@ -1,9 +1,24 @@
-const url = (string) => {
-  array = string.split('');
-  for(let i=0; i< array.length; i++) {
-    if(array[i] === ' ') {
-      array[i] = '%20';
+const compression = (word) => {
+
+  result = "";
+
+  for(let i=0; i<word.length;i++) {
+    let pointer = i+1;
+    let count = 1;
+    while(word[i] === word[pointer]) {
+      pointer++;
+      count++;
+    } 
+    //i=0, pointer = 3, count =3
+    
+    if(count >1) {
+      result += `${count}${word[i]}`  //3a1b2c4d1a
+    } else {
+      result += `${word[i]}`
     }
+    i= i+count-1;
   }
-  return array.join('');
-} 
+
+
+  return result;
+}
