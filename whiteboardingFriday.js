@@ -105,6 +105,60 @@ const dedupingSet = (array) => {
 }
 console.log(dedupingSet([7, 9, "hi", 12, "hi", 7, 53]));
 
+//#3
+const compressR = (string) => {
+
+  if(string.length === 0) {
+    return "";
+  }
+  else {
+    let count = 1;
+    while(string[count]===string[0]) {
+        count++;
+    }
+    const remaining = string.substring(count);
+    console.log(remaining);
+    if (count > 1) {
+      return `${count}${string[0]}${compressR(remaining)}`;
+    }
+    else {
+      return `${string[0]}${compressR(remaining)}`;
+    }
+  }
+}
+console.log(compressR("aaabccdddda"));
+
+const compress = (string) => {
+
+  if(string.length === 0) {
+    return "";
+  }
+  else {
+    let result = "";
+    for(let i=0; i<string.length; i++) {
+      let count=1;
+      while(string[i]===string[i+count]) {
+        count++;
+      }
+      if (count >1) {
+        result += `${count}${string[i]}`;
+      }
+      else {
+        result += `${string[i]}`;
+      }
+      i += count-1;
+    }
+    return result;
+  }
+}
+console.log(compress("aaabccdddda"));
+
+
+
+
+
+
+
 //#4
 //inefficient because this will have a runtime of O(n^2)
 const unique = (string) => {
@@ -129,5 +183,4 @@ const uniqueSet = (string) => {
   }
   return string.length === set1.size;
 }
-
 console.log(uniqueSet("copyright"));
