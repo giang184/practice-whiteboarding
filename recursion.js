@@ -96,6 +96,18 @@ const deduping = (array) => {
   return array;
 }
 
+const dedupingFilter = (array) => {
+  result = [];
+  
+  while(array.length > 0) {
+    result.push(array[0]);
+    array=array.filter(word => word != array[0]);
+  }
+  return result;
+}
+
+console.log(dedupingFilter([7, 9, "hi", 12, "hi", 7, 53]));
+
 const dedupingRecursion = (array) => {
   let result = [];
   if(array.length === 0) {
@@ -124,5 +136,20 @@ const dedupingRecursion = (array) => {
   }
 }
 
+const dedupingMap = (array) => {
+  let myMap = new Map();
+  for(let i=0; i<array.length;i++) {
+    myMap.set(array[i],i);
+  }
+  return Array.from(myMap.keys());
+}
+console.log(dedupingMap([7, 9, "hi", 12, "hi", 7, 53]));
 
-console.log(dedupingRecursion([5]));
+const dedupingSet = (array) => {
+  let mySet = new Set();
+  for(let i=0; i<array.length;i++) {
+    mySet.add(array[i]);
+  }
+  return Array.from(mySet);
+}
+console.log(dedupingSet([7, 9, "hi", 12, "hi", 7, 53]));
