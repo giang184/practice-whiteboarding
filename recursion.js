@@ -45,3 +45,16 @@ var getRow = function(rowIndex) {
 };
 
 console.log(getRow(1));
+
+
+//Question 1
+const url = (string) => {
+  array = string.split(' ');
+  len = array.length;
+  if (len <= 1){
+    return string;
+  } else {
+    return `${array[0]}%20${url(array.slice(1).join(' '))}`;
+  }
+}
+console.log(url("hello there my friend"));

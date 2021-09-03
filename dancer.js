@@ -1,15 +1,3 @@
-const dancer = () => {
-  return () => ({
-    samba: () => {
-      return 'dancer can samba!',  () => ({
-        tango: () => {
-          return 'dancer can tango!';
-        }
-      })
-    }
-  })
-}
-
 let dancer1 = dancer()().samba;
 console.log(dancer1)
 
