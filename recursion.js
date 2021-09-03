@@ -80,3 +80,49 @@ const url = (string) => {
 } 
 
 console.log(url("hello there my friend"));
+
+//Question 1
+
+//inefficient because this will have a runtime of O(n^2)
+const deduping = (array) => {
+  for(let i=0; i<array.length - 1; i++) {
+    for(let k=i+1; k<array.length; k++) {
+      if(array[i]===array[k]) {
+        array.splice(k,1);
+        k--;
+      }
+    }
+  }
+  return array;
+}
+
+const dedupingRecursion = (array) => {
+  let result = [];
+  if(array.length === 0) {
+    return [];
+  }
+  else if(array.length === 1) {
+    result.push(array[0]);
+    return result;
+  }
+  else {
+    result.push(array[0]);
+    //dedupe
+    for(let k = 1; k<array.length; k++) {
+      if (array[0] === array[k]) {
+        array.splice(k,1);
+        k--;
+      }
+    }
+
+    previousArray = dedupingRecursion(array.splice(1));
+    for(let i=0; i<previousArray.length; i++) {
+      result.push(previousArray[i]);
+    }
+
+    return result;
+  }
+}
+
+
+console.log(dedupingRecursion([5]));

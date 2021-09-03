@@ -20,4 +20,4 @@ var getRow = function(rowIndex) {
   }
 };
 
-console.log(getRow(6));
+console.log(getRow(10));
