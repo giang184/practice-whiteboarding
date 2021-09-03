@@ -48,13 +48,35 @@ console.log(getRow(1));
 
 
 //Question 1
-const url = (string) => {
+const urlRecursion = (string) => {
   array = string.split(' ');
   len = array.length;
   if (len <= 1){
     return string;
   } else {
-    return `${array[0]}%20${url(array.slice(1).join(' '))}`;
+    return `${array[0]}%20${urlRecursion(array.slice(1).join(' '))}`;
   }
 }
+console.log(urlRecursion("hello there my friend"));
+
+const urlRecursion = (string) => {
+  array = string.split(' ');
+  len = array.length;
+  if (len <= 1){
+    return string;
+  } else {
+    return `${array[0]}%20${urlRecursion(array.slice(1).join(' '))}`;
+  }
+}
+
+const url = (string) => {
+  array = string.split('');
+  for(let i=0; i< array.length; i++) {
+    if(array[i] === ' ') {
+      array[i] = '%20';
+    }
+  }
+  return array.join('');
+} 
+
 console.log(url("hello there my friend"));
